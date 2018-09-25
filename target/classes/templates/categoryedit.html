@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>category editor</title>
+</head>
+<body>
+<form action="categoryupdate" method="post">
+    <input type="hidden" id="txtCategoryid" name="categoryid" th:field="${category.categoryid}"/><br/>
+    <label for="txtCategoryname">Category Name：</label>
+    <input type="text" id="txtCategoryname" name="categoryname" th:field="${category.categoryname}"/><br/>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

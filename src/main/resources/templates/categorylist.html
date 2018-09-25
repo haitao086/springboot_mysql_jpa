@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+    <style>
+        table, th, td {
+            border: 1px solid green;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{/categoryinit}">Added</a>
+<table>
+    <tr>
+        <th>Category&nbsp; No.</th>
+        <th>Category&nbsp; Name</th>
+        <th>Operation</th>
+    </tr>
+    <!--without pageable-->
+    <!--<tr th:each="item : ${list}">-->
+    <!--pageable-->
+    <tr th:each="item : ${page.content}">
+        <td th:text="${item.categoryid}">Category&nbsp; No.</td>
+        <td th:text="${item.categoryname}">Category&nbsp; Name</td>
+        <td>
+            <a th:href="@{/categoryedit(categoryid=${item.categoryid})}">Edit</a>&nbsp;&nbsp;
+            <a th:href="@{/categorydelete(categoryid=${item.categoryid})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<div>
+    <a th:href="@{/categorylist(start=0)}">[First&nbsp;Page]</a>&nbsp;&nbsp;
+    <a th:if="${not page.isFirst()}" th:href="@{/categorylist(start=${page.number-1})}">[Previous&nbsp;Page]</a>&nbsp;&nbsp;
+    <a th:if="${not page.isLast()}" th:href="@{/categorylist(start=${page.number+1})}">[Next&nbsp;Page]</a>&nbsp;&nbsp;
+    <a th:href="@{/categorylist(start=${page.totalPages-1})}">[Last&nbsp;Page]</a>
+</div>
+</body>
+</html>
